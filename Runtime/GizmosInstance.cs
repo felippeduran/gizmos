@@ -25,9 +25,8 @@ namespace Popcron
     [AddComponentMenu("")]
     public class GizmosInstance : MonoBehaviour
     {
-        private const int DefaultQueueSize = 512;
-
         private static GizmosInstance instance;
+        private static int DefaultQueueSize = 512;
         private static bool hotReloaded = true;
         private static Material defaultMaterial;
         internal static Camera currentRenderingCamera;
@@ -84,6 +83,12 @@ namespace Popcron
 
                 return defaultMaterial;
             }
+        }
+
+        public static void SetDefaultQueueSize(int size)
+        {
+            DefaultQueueSize = size;
+            hotReloaded = true;
         }
 
         internal static GizmosInstance GetOrCreate()
